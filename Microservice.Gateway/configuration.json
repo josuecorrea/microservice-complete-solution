@@ -9,7 +9,7 @@
           "Host": "localhost",
           "Port": 44309
         }
-      ],
+      ],     
       "UpstreamPathTemplate": "/api/product/{everything}",
       "UpstreamHttpMethod": [
         "GET",
@@ -17,10 +17,11 @@
         "PUT",
         "DELETE"
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      },
+      "SwaggerKey": "products",
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "TestKey",
+      //  "AllowedScopes": []
+      //},
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
@@ -50,10 +51,11 @@
         "PUT",
         "DELETE"
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      },
+      "SwaggerKey": "payment",
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "TestKey",
+      //  "AllowedScopes": []
+      //},
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
@@ -68,6 +70,6 @@
     }
   ],
   "GlobalConfiguration": {
-
+    
   }
 }
