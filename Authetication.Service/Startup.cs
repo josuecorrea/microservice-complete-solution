@@ -1,5 +1,3 @@
-using FluentValidation;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,13 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Product.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Product.Service
+namespace Authetication.Service
 {
     public class Startup
     {
@@ -33,10 +30,8 @@ namespace Product.Service
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Product.Service", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Authetication.Service", Version = "v1" });
             });
-
-            AddMediatr(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +41,7 @@ namespace Product.Service
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product.Service v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Authetication.Service v1"));
             }
 
             app.UseHttpsRedirection();
@@ -59,20 +54,6 @@ namespace Product.Service
             {
                 endpoints.MapControllers();
             });
-        }
-
-        private static void AddMediatr(IServiceCollection services)
-        {
-            const string applicationAssemblyName = "Product.Application";
-            var assembly = AppDomain.CurrentDomain.Load(applicationAssemblyName);
-
-            AssemblyScanner
-                .FindValidatorsInAssembly(assembly)
-                .ForEach(result => services.AddScoped(result.InterfaceType, result.ValidatorType));
-
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastRequestBehavior<,>));
-
-            services.AddMediatR(assembly);
         }
     }
 }

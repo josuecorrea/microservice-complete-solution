@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace Microservice.ApiGateway.Controllers
+namespace Gateway.Service.Controllers
 {
     [ApiController]
     [Route("gateway")]

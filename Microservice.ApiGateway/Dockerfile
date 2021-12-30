@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Microservice.ApiGateway/Microservice.ApiGateway.csproj", "Microservice.ApiGateway/"]
-RUN dotnet restore "Microservice.ApiGateway/Microservice.ApiGateway.csproj"
+COPY ["Gateway.Service/Gateway.Service.csproj", "Gateway.Service/"]
+RUN dotnet restore "Gateway.Service/Gateway.Service.csproj"
 COPY . .
-WORKDIR "/src/Microservice.ApiGateway"
-RUN dotnet build "Microservice.ApiGateway.csproj" -c Release -o /app/build
+WORKDIR "/src/Gateway.Service"
+RUN dotnet build "Gateway.Service.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Microservice.ApiGateway.csproj" -c Release -o /app/publish
+RUN dotnet publish "Gateway.Service.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Microservice.ApiGateway.dll"]
+ENTRYPOINT ["dotnet", "Gateway.Service.dll"]
