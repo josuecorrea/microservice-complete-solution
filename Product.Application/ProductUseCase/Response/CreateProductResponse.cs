@@ -10,5 +10,6 @@ namespace Product.Application.ProductUseCase.Response
 {
     public class CreateProductResponse : Domain.ValueObjects.Response, IUseCase
     {
+
     }
 }

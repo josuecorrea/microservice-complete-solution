@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Product.Application.ProductUseCase.Request;
+using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Product.Service.Controllers
@@ -34,6 +36,8 @@ namespace Product.Service.Controllers
         {
             try
             {
+                _logger.LogInformation($"Create new product with parameters {createProductRequest}");
+
                var response = await _mediator.Send(createProductRequest).ConfigureAwait(false);
 
                 if (response.Errors.Any())
@@ -43,8 +47,10 @@ namespace Product.Service.Controllers
 
                 return Ok(response);
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
+                _logger.LogError($"An error ocurred while create new product with parameters {JsonSerializer.Serialize(createProductRequest)}");
+
                return BadRequest();
             }
         }

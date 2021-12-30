@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Authetication.Service
@@ -23,9 +24,17 @@ namespace Authetication.Service
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddIdentityServer(x =>
+            {
+                x.IssuerUri = "none";
+            })
+                .AddDeveloperSigningCredential()
+                .AddInMemoryApiResources(Config.GetAllApiResources())
+                .AddInMemoryClients(Config.GetClients(Configuration));
+            services.AddScoped<HttpClient>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -34,7 +43,6 @@ namespace Authetication.Service
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -43,7 +51,12 @@ namespace Authetication.Service
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Authetication.Service v1"));
             }
+            else
+            {
+                app.UseHsts();
+            }
 
+            app.UseIdentityServer();
             app.UseHttpsRedirection();
 
             app.UseRouting();
