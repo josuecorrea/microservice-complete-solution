@@ -20,7 +20,10 @@ namespace Authetication.Service.Controllers
                 Address = "http://localhost:6000/connect/token",
                 ClientId = "ClientId",
                 ClientSecret = "ClientSecret",
-                Scope = "SampleService"
+                Scope = "openid openid profile email product",
+               // Resource = "SampleService"
+               
+
             });
 
             return Ok(tokenResponse.Json);

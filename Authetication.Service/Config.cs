@@ -11,7 +11,15 @@ namespace Authetication.Service
         {
             return new List<ApiResource>
             {
-                new ApiResource("SampleService","All services for testing")
+                new ApiResource("SampleService","All services for testing"),
+                new ApiResource("Product")
+                {
+                    Scopes =
+                    {
+                        "Product.Read",
+                        "Product.Write"
+                    }
+                }
             };
         }
 
@@ -22,14 +30,41 @@ namespace Authetication.Service
                 new Client
                 {
                     ClientId = "ClientId",
+                    //ClientName = "NomeCliente",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets =
                     {
                         new Secret("ClientSecret".Sha256())
                     },
-                    AllowedScopes = { "SampleService" },
-                    AccessTokenLifetime =3600
+                    AllowedScopes = { "openid", "profile", "email", "product" },
+                    AccessTokenLifetime = 3600,
+                    
+
                 }
+            };
+        }
+
+        public static IEnumerable<IdentityResource> GetIdentityResources([FromServices] IConfiguration configuration)
+        {
+            return new List<IdentityResource>
+            {
+               new IdentityResources.Address(),
+               new IdentityResources.Email(),
+               new IdentityResources.OpenId(),
+               new IdentityResources.Profile()
+
+            };
+        }
+
+        public static IEnumerable<ApiScope> GetApiScopes([FromServices] IConfiguration configuration)
+        {
+            //var claims = new List<string>
+
+            return new List<ApiScope>
+            {
+               new ApiScope("service"),
+               new ApiScope("product")
+
             };
         }
     }

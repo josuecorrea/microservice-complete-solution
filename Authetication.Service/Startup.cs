@@ -27,13 +27,18 @@ namespace Authetication.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
             services.AddIdentityServer(x =>
             {
                 x.IssuerUri = "none";
             })
                 .AddDeveloperSigningCredential()
+                .AddInMemoryClients(Config.GetClients(Configuration))
                 .AddInMemoryApiResources(Config.GetAllApiResources())
-                .AddInMemoryClients(Config.GetClients(Configuration));
+                .AddInMemoryIdentityResources(Config.GetIdentityResources(Configuration))
+                .AddInMemoryApiScopes(Config.GetApiScopes(Configuration));
+                
+
             services.AddScoped<HttpClient>();
 
             services.AddControllers();
@@ -56,7 +61,19 @@ namespace Authetication.Service
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
+
             app.UseIdentityServer();
+
+            //app.UseMvc();
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
