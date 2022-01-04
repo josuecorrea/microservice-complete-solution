@@ -1,3 +1,4 @@
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using System;
 
 namespace Gateway.Service
 {
@@ -27,6 +29,18 @@ namespace Gateway.Service
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gateway.Service", Version = "v1" });
             });
+
+            var authenticationProviderKey = "TestKey";
+            Action<IdentityServerAuthenticationOptions> opt = o =>
+            {
+                o.Authority = "http://localhost:6000";
+                o.ApiName = "SampleService";
+                o.SupportedTokens = SupportedTokens.Both;
+                o.RequireHttpsMetadata = false;
+            };
+
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(authenticationProviderKey, opt);
 
             services.AddOcelot(Configuration).AddCacheManager(x =>
             {
