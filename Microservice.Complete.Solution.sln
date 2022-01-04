@@ -9,27 +9,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{330CBB74-AA52-416B-923D-CFB64127ECE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.Service", "Microservice.ApiGateway\Gateway.Service.csproj", "{E62708A4-6837-4BCB-B60B-BF24A667245C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Service", "Microservice.ApiGateway\Gateway.Service.csproj", "{E62708A4-6837-4BCB-B60B-BF24A667245C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Service", "Product.Service\Product.Service.csproj", "{F2AE9353-D602-4171-876E-B4565844960D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Service", "Product.Service\Product.Service.csproj", "{F2AE9353-D602-4171-876E-B4565844960D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authetication.Service", "Authetication.Service\Authetication.Service.csproj", "{3749290E-2FA3-4E01-AB29-566CFA39F825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authetication.Service", "Authetication.Service\Authetication.Service.csproj", "{3749290E-2FA3-4E01-AB29-566CFA39F825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Domain", "Product.Domain\Product.Domain.csproj", "{F5EF81B1-F548-4D6D-84FB-36B238126CDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Domain", "Product.Domain\Product.Domain.csproj", "{F5EF81B1-F548-4D6D-84FB-36B238126CDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Application", "Product.Application\Product.Application.csproj", "{9FC0CB81-4623-4F3C-9ADD-26B882D2C321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Application", "Product.Application\Product.Application.csproj", "{9FC0CB81-4623-4F3C-9ADD-26B882D2C321}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraServices", "InfraServices", "{B4EC125A-D887-4B0E-ACE0-573B4A0F14CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraService.MongoDb", "InfraServices.MongoDb\InfraService.MongoDb.csproj", "{23A112C4-C6DF-415D-97C7-993153FF0053}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraService.MongoDb", "InfraServices.MongoDb\InfraService.MongoDb.csproj", "{23A112C4-C6DF-415D-97C7-993153FF0053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraService.SQLServer", "InfraServices.SQLServer\InfraService.SQLServer.csproj", "{85876B96-AC0C-4D4D-A668-2727002BFC0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraService.SQLServer", "InfraServices.SQLServer\InfraService.SQLServer.csproj", "{85876B96-AC0C-4D4D-A668-2727002BFC0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraService.Cache", "InfraService.Cache\InfraService.Cache.csproj", "{061366D4-C0AD-4AD3-9C46-AF4987028D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraService.Cache", "InfraService.Cache\InfraService.Cache.csproj", "{061366D4-C0AD-4AD3-9C46-AF4987028D0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraService.Message.Kafka", "InfraService.Message.Kafka\InfraService.Message.Kafka.csproj", "{9F2D0A75-1AC5-4D34-A019-7B73256C1CCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraService.Message.Kafka", "InfraService.Message.Kafka\InfraService.Message.Kafka.csproj", "{9F2D0A75-1AC5-4D34-A019-7B73256C1CCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Infra", "Product.Infra\Product.Infra.csproj", "{F0698C2F-3F16-4572-B9E0-9726D697F71F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Infra", "Product.Infra\Product.Infra.csproj", "{F0698C2F-3F16-4572-B9E0-9726D697F71F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraService.Core", "InfraService.Core\InfraService.Core.csproj", "{31B2FE37-5206-4FCB-95A7-F5DA0905F0EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{F0698C2F-3F16-4572-B9E0-9726D697F71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0698C2F-3F16-4572-B9E0-9726D697F71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0698C2F-3F16-4572-B9E0-9726D697F71F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B2FE37-5206-4FCB-95A7-F5DA0905F0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B2FE37-5206-4FCB-95A7-F5DA0905F0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B2FE37-5206-4FCB-95A7-F5DA0905F0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B2FE37-5206-4FCB-95A7-F5DA0905F0EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{061366D4-C0AD-4AD3-9C46-AF4987028D0B} = {B4EC125A-D887-4B0E-ACE0-573B4A0F14CD}
 		{9F2D0A75-1AC5-4D34-A019-7B73256C1CCD} = {B4EC125A-D887-4B0E-ACE0-573B4A0F14CD}
 		{F0698C2F-3F16-4572-B9E0-9726D697F71F} = {330CBB74-AA52-416B-923D-CFB64127ECE5}
+		{31B2FE37-5206-4FCB-95A7-F5DA0905F0EC} = {B4EC125A-D887-4B0E-ACE0-573B4A0F14CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B879F91-3E2A-446C-AC2F-507771B6C4B5}
